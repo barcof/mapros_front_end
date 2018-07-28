@@ -19,5 +19,12 @@ Ext.define('Mapros.view.config.user.List', {
         { text: 'ID',  dataIndex: 'id' },
         { text: 'NIK', dataIndex: 'nik', flex: 1 },
         { text: 'NAME', dataIndex: 'name', flex: 1 }
-    ]
+    ],
+
+    bbar: {
+        plugins: 'pagingtoolbar',
+        store: {
+            type: 'user'
+        }
+    }
 });

@@ -8,11 +8,12 @@ Ext.define('Mapros.view.config.user.User',{
 		'Mapros.view.main.List',
 		'Mapros.view.config.user.List',
 		'Mapros.view.config.user.access.List',
-		'Mapros.view.config.user.department.List'
+		'Mapros.view.config.user.department.List',
+		'Mapros.view.config.user.level.List'
 	],
 
 	layout: {
-        type: 'anchor'
+        type: 'border'
     },
 
     autoScroll: true,
@@ -20,11 +21,17 @@ Ext.define('Mapros.view.config.user.User',{
  	padding: 10,
 
     items: [{
+    	region: 'north',
+    	height: 250,
     	xtype: 'list_user',
     }, {
-    	xtype: 'user_access',
-    	padding: '10 0 0 0'
+    	region: 'center',
+    	xtype: 'user_access'
     }, {
-    	xtype: 'user_department'
+    	// region: 'south',
+    	// xtype: 'user_department'
+    }, {
+    	// region: 'east',
+    	// xtype: 'user_level'
     }]
 });
