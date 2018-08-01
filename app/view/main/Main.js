@@ -13,6 +13,7 @@ Ext.define('Mapros.view.main.Main', {
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
 
+        'Mapros.util.Setter',
         'Mapros.view.main.MainController',
         'Mapros.view.main.MainModel',
         'Mapros.view.main.List',
@@ -25,7 +26,8 @@ Ext.define('Mapros.view.main.Main', {
 
     controller: 'main',
     viewModel: 'main',
-    // plugins: 'viewport',
+    
+    plugins: 'viewport',
 
     ui: 'navigation',
 
@@ -81,66 +83,79 @@ Ext.define('Mapros.view.main.Main', {
         }
     },
 
-    // activeTab: 3,
+    activeTab: 3, // remove this after finish developing
 
-    dockedItems: [{ xtype: 'homeToolbar' }],
+    dockedItems: [{ 
+        xtype: 'homeToolbar'
+    }],
 
     items: [{
         title: 'Process Scan',
-        iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
+        icon: 'resources/barcode-scanner.png',
+        // iconCls: 'fa-home',
         items: [{
             xtype: 'scanning',
             height: 600
         }]
     }],
 
+    isLoggedIn : false,
+
     initItems: function() {
-        if(localStorage.getItem("LoggedIn") == "true") {
-            this.items = [{
+        me = this;
+        if(this.isLoggedIn){
+            me.items = [
+                {
                     title: 'Process Scan',
-                    iconCls: 'fa-home',
-                    // The following grid shares a store with the classic version's grid as well!
+                    icon: 'resources/barcode-scanner.png',
+                    // iconCls: 'fa-home',
                     items: [{
                         xtype: 'scanning',
                         height: 600
                     }]
                 }, {
                     title: 'Record Data',
-                    iconCls: 'fa-home',
-                    // The following grid shares a store with the classic version's grid as well!
+                    icon: 'resources/report.png',
+                    // iconCls: 'fa-bar-chart',
                     items: [{
                         xtype: 'mainlist'
                     }]
                 }, {
                     title: 'Print Ticket',
-                    iconCls: 'fa-print',
+                    icon: 'resources/print.png',
+                    // iconCls: 'fa-print',
                     bind: {
                         html: '{loremIpsum}'
                     }
                 }, {
                     title: 'Settings',
-                    iconCls: 'fa-cog',
+                    icon: 'resources/setting.png',
+                    // iconCls: 'fa-cog',
                     items: [{
                         xtype: 'config',
                         height: 600
                     }]
                 }, {
                     title: 'Line',
-                    // icon: 'resources/line.png',
-                    iconCls: 'fa-exchange',
+                    icon: 'resources/line.png',
+                    // iconCls: 'fa-exchange',
                     bind: {
                         html: '{loremIpsum}'
                     }
                 }, {
                     title: 'Log',
-                    iconCls: 'fa-book',
+                    icon: 'resources/log.png',
+                    // iconCls: 'fa-book',
                     bind: {
                         html: '{loremIpsum}'
                     }
+            }];
+
+            me.dockedItems = [{ 
+                xtype: 'homeToolbar',
+                isLoggedIn: true,
             }]
         }
-
-        this.callParent();
+        me.callParent();
     }
 });

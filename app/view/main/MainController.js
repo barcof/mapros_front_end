@@ -52,7 +52,7 @@ Ext.define('Mapros.view.main.MainController', {
 
     onLogout: function() {
         // Remove the localStorage key/value
-        localStorage.removeItem('LoggedIn');
+        localStorage.removeItem('token');
 
         // Remove Main View
         // this.getView().destroy();

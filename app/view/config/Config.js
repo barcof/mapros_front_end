@@ -8,14 +8,14 @@ Ext.define('Mapros.view.config.Config',{
 	],
 	// frame: true,
 	// plain: true,
-	// ui: 'navigation',
+	ui: 'navigation',
 
 	// header: {
  //        layout: {
  //            align: 'stretchmax'
  //        }
  //    },
- 	activeTab: 2,
+ 	// activeTab: 2,
 
 	tabBar: {
         flex: 1,
@@ -27,11 +27,17 @@ Ext.define('Mapros.view.config.Config',{
     },
 
 	items: [{
-		title: 'Scanner'
+		title: 'Scanner',
+		icon: 'resources/scanner.png',
+		iconAlign: 'top'
 	}, {
-		title: 'Sequence'
+		title: 'Sequence',
+		icon: 'resources/sequence.png',
+		iconAlign: 'top'
 	}, {
 		title: 'User',
+		icon: 'resources/user-icon.png',
+		iconAlign: 'top',
 		xtype: 'user'
 	}]
 });

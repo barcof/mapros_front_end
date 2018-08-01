@@ -2,30 +2,61 @@ Ext.define('Mapros.view.login.LoginController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.login',
 
-    // requires: [
-    //     'Mapros.view.main.Main',
-    //     'Mapros.view.main.MainController'
-    // ],
+    requires: [
+        'Mapros.util.Setter'
+    ],
 
     onLoginClick: function() {
 
-        // This would be the ideal location to verify the user's credentials via
-        // a server-side lookup. We'll just move forward for the sake of this example.
+        var email = this.getView().down('textfield[name=email]').getValue();
+        var password = this.getView().down('textfield[name=password]').getValue();
 
-        // Set the localStorage value to true
-        localStorage.setItem("LoggedIn", true);
+        Ext.Ajax.request({
+            url: 'http://'+Mapros.util.Setter.hostname()+'/mapros_system/public/api/auth/login',
 
-        // Call method from another controller
-        this.fireEvent('showLogOutButton');
+            method: 'POST',
 
-        // Remove Login Window
-        this.getView().destroy();
+            params: {
+                email: email,
+                password: password
+            },
 
-        // Add the main view to the viewport
-        Ext.create({
-            xtype: 'app-main'
+            success: function (response, opts){
+
+                var res = JSON.parse(response.responseText);
+                var token = res.token;
+
+                localStorage.setItem("token", token);
+                // Call method from another controller
+                // self.fireEvent('showLogOutButton');
+
+                // Remove Login Window
+                // self.getView().destroy();
+                // var win = Ext.ComponentQuery().query('window[name=login]');
+                // console.log(win);
+
+                // Add the main view to the viewport
+                // Ext.create({
+                //     xtype: 'app-main'
+                // });
+
+                location.reload();
+            },
+            failure: function(response, opts) {
+                Ext.toast({
+                    html: 'Login Failed',
+                    bodyStyle: {
+                        color: 'rgba(255,0,0,0.6)',
+                        padding: '0',
+                        fontSize: '36px',
+                        fontStyle: 'italic'
+                    },
+                    border: false,
+                    frame: false,
+                    align: 't'
+                });
+            }
         });
 
-        location.reload();
     }
 });

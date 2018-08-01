@@ -7,8 +7,17 @@ Ext.define('Mapros.store.Accesses', {
 
     autoLoad: true,
 
+    autoSync: true,
+
     proxy: {
         type: 'rest',
+
+        // header: {
+        //     Authorization: 'Bearer'+ localStorage.getItem('token')
+        // },
+        extraParams: {
+            token: localStorage.getItem('token')
+        },
 
         enablePaging:true,
 

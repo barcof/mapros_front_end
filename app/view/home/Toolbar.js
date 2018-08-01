@@ -22,20 +22,12 @@ Ext.define('Mapros.view.home.Toolbar',{
 	        scale: 'large',
 	        handler: 'onLogin'
 	    }
-	    // { 
-	    //     xtype: 'button',
-	    //     name: 'signout',
-	    //     buttonAlign: 'right',
-	    //     text: 'SIGN OUT',
-	    //     iconCls: 'fa fa-sign-out fa-2x',
-	    //     scale: 'large',
-	    //     hidden: !this.isLogIn,
-	    //     handler: 'onLogout'
-	    // }
 	],
 
+	isLoggedIn : false,
+
     initItems : function (){
-    	if(localStorage.getItem("LoggedIn") == "true") {
+    	if(this.isLoggedIn) {
     		this.items = [{ 
 		        xtype: 'button',
 		        name: 'signout',

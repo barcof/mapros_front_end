@@ -13,25 +13,22 @@ Ext.define('Mapros.view.config.user.User',{
 	],
 
 	layout: {
-        type: 'border'
+        type: 'anchor'
     },
 
     autoScroll: true,
 
- 	padding: 10,
-
     items: [{
-    	region: 'north',
-    	height: 250,
-    	xtype: 'list_user',
+        xtype: 'list_user',
+        collapsible: true
     }, {
-    	region: 'center',
-    	xtype: 'user_access'
+    	xtype: 'user_access',
+        collapsible: true
     }, {
-    	// region: 'south',
-    	// xtype: 'user_department'
+    	xtype: 'user_department',
+        collapsible: true,
     }, {
-    	// region: 'east',
-    	// xtype: 'user_level'
+    	xtype: 'user_level',
+        collapsible: true,
     }]
 });

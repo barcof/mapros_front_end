@@ -15,6 +15,8 @@ Ext.define('Mapros.view.config.user.List', {
         type: 'user'
     },
 
+    margin: '10 0 0 0',
+
     columns: [
         { text: 'ID',  dataIndex: 'id' },
         { text: 'NIK', dataIndex: 'nik', flex: 1 },
@@ -22,7 +24,7 @@ Ext.define('Mapros.view.config.user.List', {
     ],
 
     bbar: {
-        plugins: 'pagingtoolbar',
+        xtype: 'pagingtoolbar',
         store: {
             type: 'user'
         }

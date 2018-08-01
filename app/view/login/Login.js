@@ -1,8 +1,8 @@
 Ext.define('Mapros.view.login.Login',{
-  extend: 'Ext.window.Window',
-  xtype: 'login',
+    extend: 'Ext.window.Window',
+    xtype: 'login',
 
-  requires: [
+    requires: [
         'Mapros.view.login.LoginController',
         'Ext.form.Panel'
     ],
@@ -19,15 +19,17 @@ Ext.define('Mapros.view.login.Login',{
         reference: 'form',
         items: [{
             xtype: 'textfield',
-            name: 'username',
-            fieldLabel: 'Username',
-            allowBlank: false
+            name: 'email',
+            fieldLabel: 'Email',
+            allowBlank: false,
+            value: 'alfiandi.hakim@jvc-jein.co.id'
         }, {
             xtype: 'textfield',
             name: 'password',
             inputType: 'password',
             fieldLabel: 'Password',
-            allowBlank: false
+            allowBlank: false,
+            value: 'edp11edp11'
         }, {
             xtype: 'displayfield',
             hideEmptyLabel: false,
